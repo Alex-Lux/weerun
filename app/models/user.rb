@@ -2,7 +2,7 @@ class User < ApplicationRecord
   has_many :runs
   has_many :run_bookings
   has_many :run_owner_reviews, dependent: :destroy
-  has_many :runner_reviews, dependent: :destroy
+  has_many :runner_reviews, through: :run_bookings, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
