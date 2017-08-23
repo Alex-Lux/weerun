@@ -13,6 +13,6 @@ Rails.application.routes.draw do
 
   patch '/run_bookings/:id/accept', to: 'run_bookings#accept'
   patch '/run_bookings/:id/decline',  to: 'run_bookings#decline'
-
+  get '/search',  to: 'pages#search'
 
 end
