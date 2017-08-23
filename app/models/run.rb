@@ -2,6 +2,7 @@ class Run < ApplicationRecord
   belongs_to :user
   has_many :users, through: :run_bookings
   has_many :run_bookings, dependent: :destroy
+  has_many :run_owner_reviews
 
   validates :date_time, presence: true
   validates :name, presence: true
