@@ -11,6 +11,7 @@
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
+    <%= cl_image_tag current_user.photo, height: 300, width: 400, crop: :fill %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
   </body>
