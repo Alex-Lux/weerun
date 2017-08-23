@@ -12,4 +12,6 @@ class Run < ApplicationRecord
   validates :location, presence: true
   validates :group_number, presence: true
 
+  mount_uploader :photo, PhotoUploader
+
 end
