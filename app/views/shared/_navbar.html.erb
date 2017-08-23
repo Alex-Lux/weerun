@@ -1,7 +1,7 @@
-<div class="navbar-wagon">
+<div class="navbar-weerun">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "logo.png" %>
+    <%= image_tag "weerun_logo_white.jpg" %>
   <% end %>
 
   <!-- Right Navigation -->
@@ -10,9 +10,9 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "Host", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Trips", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Messages", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Create a Run", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Manage my Runs", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Logout", "#", class: "navbar-wagon-item navbar-wagon-link" %>
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
