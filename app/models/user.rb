@@ -6,6 +6,8 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
+
+
   #validates :first_name, presence: true
   #validates :last_name, presence: true, length: { minimum: 2 }
   validates :email, uniqueness: true, presence: true, format: { with: /\A.*@.*\.com\z/ }
@@ -16,6 +18,7 @@ class User < ApplicationRecord
   #validates :gender, presence: true
   #validates :pace, presence: true
   #validates :photo, presence: true
+
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
