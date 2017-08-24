@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="col-xs-12 col-md-4 text-left">
+    <h1>This a special run</h1>
+
+    <p><b>Run:</b><%= @run.name %></p>
+    <p><b>When:</b><%= @run.date_time %></p>
+    <p><b>Run photo:</b><%= @run.photo %></p>
+    <p><b>Distance:</b><%= @run.distance %></p>
+    <p><b>Run Pace:</b><%= @run.pace %></p>
+    <p><b>Run Incline:</b><%= @run.incline %></p>
+    <p><b>Elevation Gain:</b><%= @run.elevation_gain %></p>
+    <p><b>Terrain:</b><%= @run.terrain %></p>
+    <p><b>WeatherConditions:</b><%= @run.all_weather  %></p>
+    <p><b>Number of people:</b><%= @run.group_number %></p>
+    <p><b>Languages:</b><%= @run.language_spoken %></p>
+    <p><b>Details:</b><%= @run.description %></p>
+    </div>
+
+  <div class="col-xs-12 col-md-4 text-left">
+    <h1>Created by this user</h1>
+    <p><b>User photo:</b><%= @run.user.photo %></p>
+    <p><b>User:</b><%= @run.user.first_name %><%= @run.user.last_name %></p>
+    <p><b>Gender:</b><%= @run.user.gender %></p>
+    <p><b>Languages:</b><%= @run.user.language_spoken %></p>
+    <p><b>About:</b><%= @run.user.description %></p>
+    <p><b>Run Pace:</b><%= @run.user.pace %></p>
+  </div>
+</div>

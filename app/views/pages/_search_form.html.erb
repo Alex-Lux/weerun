@@ -1,5 +1,6 @@
 <div class="button">
   <%= simple_form_for "", url: runs_search_path, :method => :get do |f| %>
+                        
    <%= f.text_field :search, value: params[:search], placeholder: "Search by city", class: "btn-medium" %>
    <%= f.text_field :search, value: params[:search], placeholder: "Search by approximate distance", class: "btn-medium" %>
     <%= f.submit "Search", class: "btn btn-primary btn-treehouse" %>
