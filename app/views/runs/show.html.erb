@@ -25,4 +25,11 @@
     <p><b>About:</b><%= @run.user.description %></p>
     <p><b>Run Pace:</b><%= @run.user.pace %></p>
   </div>
+  <div>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#booking">
+    Request to join
+    </button>
+  </div>
+  <%= render 'run_bookings/booking_form' %>
 </div>
