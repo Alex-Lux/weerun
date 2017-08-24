@@ -7,7 +7,7 @@ class Run < ApplicationRecord
   validates :date_time, presence: true
   validates :name, presence: true
   validates :pace, presence: true
-  validates :incline, presence: true
+  # validates :incline, presence: true
   validates :distance, presence: true
   validates :location, presence: true
   validates :group_number, presence: true

@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
   #validates :first_name, presence: true
   #validates :last_name, presence: true, length: { minimum: 2 }
-  validates :email, uniqueness: true, presence: true, format: { with: /\A.*@.*\.com\z/ }
+  validates :email, uniqueness: true, presence: true #, #format: { with: /\A.*@.*\.com\z/ }
   #validates :phone_number, presence: true
   #validates :language_spoken, presence: true
   #validates :birthdate, presence: true
