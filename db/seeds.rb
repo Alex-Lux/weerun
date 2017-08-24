@@ -34,7 +34,7 @@ puts 'Creating 10 fake runners...'
     distance: rand(5..40),
     pace: rand(5..8),
     group_number: rand(2..10),
-    description: Faker::LoremPixel.image,
+    remote_photo_url: Faker::LoremPixel.image,
     date_time: Faker::Time.between(DateTime.now + 1, DateTime.now + 10),
     name: ["Run by the river", "Morning trail", "Forest run", "Hill run", "Ocean side run", "City run", "Long distance run", "Marathon training"].sample,
     # remote_photo_url: Faker::LoremFlickr.image("500x600", false, 'path')
