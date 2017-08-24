@@ -14,7 +14,9 @@
     <p><b>Number of people:</b><%= @run.group_number %></p>
     <p><b>Languages:</b><%= @run.language_spoken %></p>
     <p><b>Details:</b><%= @run.description %></p>
+    </div>
 
+  <div class="col-xs-12 col-md-4 text-left">
     <h1>Created by this user</h1>
     <p><b>User photo:</b><%= @run.user.photo %></p>
     <p><b>User:</b><%= @run.user.first_name %><%= @run.user.last_name %></p>
@@ -22,6 +24,5 @@
     <p><b>Languages:</b><%= @run.user.language_spoken %></p>
     <p><b>About:</b><%= @run.user.description %></p>
     <p><b>Run Pace:</b><%= @run.user.pace %></p>
-
   </div>
 </div>
