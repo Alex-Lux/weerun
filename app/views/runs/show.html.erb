@@ -1,39 +1,64 @@
-  <div class="col-xs-12 col-md-4 text-left">
-    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai') <%= @run.photo %> ;">
+  <div class="container">
+  <div class="row">
+
+  <div class="col-xs-12 col-md-6 text-left">
+
+    <div class="card-run" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
       <div class="card-category"><%= @run.terrain %></div>
       <div class="card-description">
       <h2><%= @run.name %></h2>
-      <p><b>When:</b><%= @run.date_time %></p>
-
-    </div>
-    <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
-    <a class="card-link" href="#" ></a>
-</div>
-</div>
-
-     <p><b>Distance:</b><%= @run.distance %></p>
-      <p><b>Run Pace:</b><%= @run.pace %></p>
-      <p><b>Run Incline:</b><%= @run.incline %></p>
-      <p><b>Elevation Gain:</b><%= @run.elevation_gain %></p>
-      <p><b>WeatherConditions:</b><%= @run.all_weather  %></p>
-      <p><b>Number of people:</b><%= @run.group_number %></p>
-      <p><b>Languages:</b><%= @run.language_spoken %></p>
-      <p><b>Details:</b><%= @run.description %></p>
-
-
-  <div class="col-xs-12 col-md-4 text-left">
-    <h1>Created by this user</h1>
-    <p><b>User photo:</b><%= @run.user.photo %></p>
-    <p><b>User:</b><%= @run.user.first_name %><%= @run.user.last_name %></p>
-    <p><b>Gender:</b><%= @run.user.gender %></p>
-    <p><b>Languages:</b><%= @run.user.language_spoken %></p>
-    <p><b>About:</b><%= @run.user.description %></p>
-    <p><b>Run Pace:</b><%= @run.user.pace %></p>
-  </div>
-  <div>
-    <!-- Button trigger modal -->
+      <p><b>When: </b><%= @run.date_time %></p>
+      <p><b>Distance: </b><%= @run.distance %></p>
+      <p><b>Run Pace: </b><%= @run.pace %></p>
+      <p><b>Run Incline: </b><%= @run.incline %></p>
+      <p><b>Elevation Gain: </b><%= @run.elevation_gain %></p>
+      <p><b>WeatherConditions: </b><%= @run.all_weather  %></p>
+      <p><b>Number of people: </b><%= @run.group_number %></p>
+      <p><b>Languages: </b><%= @run.language_spoken %></p>
+      <p><b>Details: </b><%= @run.description %></p>
+      <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#booking">
     Request to join
     </button>
+    </div>
+    <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+</div>
+</div>
+<div class="col-xs-12 col-md-6 text-left">
+<div class="card-run">
+  <div class="card-category"><%= @run.user.gender %></div>
+  <div class="card-description">
+  <h2><%= @run.user.first_name %> <%= @run.user.last_name %></h2>
+    <p><b>Languages: </b><%= @run.user.language_spoken %></p>
+    <p><b>About: </b><%= @run.user.description %></p>
+    <p><b>Run Pace: </b><%= @run.user.pace %></p>
+  </div>
+  <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay" <%= @run.user.photo %>>
+</div>
+</div>
+</div>
+  <div class="row">
+  <div class="col-xs-12 col-md-12">
+      <div id="map" style="width: 100%; height: 600px;"></div>
+      <% content_for(:after_js) do %>
+        <%= javascript_tag do %>
+          $(document).ready(function() {
+            var handler = Gmaps.build('Google');
+            handler.buildMap({ internal: { id: 'map' } }, function() {
+              markers = handler.addMarkers(<%= raw @hash.to_json %>);
+              handler.bounds.extendWith(markers);
+              handler.fitMapToBounds();
+              if (markers.length == 0) {
+                handler.getMap().setZoom(2);
+              } else if (markers.length == 1) {
+                handler.getMap().setZoom(14);
+              }
+            });
+          });
+        <% end %>
+      <% end %>
+    </div>
+    </div>
   </div>
   <%= render 'run_bookings/booking_form' %>
+  </div>
