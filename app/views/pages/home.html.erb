@@ -1,12 +1,14 @@
 
-<!-- app/views/pages/home.html.erb -->
 
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= image_path 'walking_dead.jpg'%>)"%;">
+<div class="banner" >
+  <div class="video">
+
+    <%= video_tag "Weerun.mp4", autoplay: :autoplay, loop: :loop, muted: :muted, class: "video" %>
+
+  </div>
   <div class="banner-content">
     <h1>WeeRun</h1>
     <p>Find a run near you</p>
     <%= render 'search_form' %>
   </div>
 </div>
-
-
