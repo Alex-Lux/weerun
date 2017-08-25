@@ -6,7 +6,9 @@ class PagesController < ApplicationController
 
 
   def search
-    @runs = Run.where.not(latitude: nil, longitude: nil)
+    @runs = Run.all
+    # For the next line to work you need to change distance collumn on the run to another name
+    #@runs = Run.near(params[:search], 100)
 
     @hash = Gmaps4rails.build_markers(@runs) do |run, marker|
       marker.lat run.latitude
