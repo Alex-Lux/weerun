@@ -6,6 +6,11 @@ class RunsController < ApplicationController
 
   def show
     @run = Run.find(params[:id])
+
+    @hash = Gmaps4rails.build_markers(@run) do |run, marker|
+      marker.lat run.latitude
+      marker.lng run.longitude
+    end
   end
 
   private
