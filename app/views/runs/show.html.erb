@@ -17,9 +17,18 @@
 <!--             <p><b>Languages: </b><%= @run.language_spoken %></p> -->
             <p><b>Details: </b><%= @run.description %></p>
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#booking">
-              Request to join
-            </button>
+
+
+            <% if current_user.run_bookings.where(run: @run).map(&:status).first == "Pending" %>
+
+                <%= link_to 'Cancel', run_run_booking_path(@run, @run.run_bookings.find_by(user: current_user)), method: :delete %>
+            <% else %>
+
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#booking">
+                Request to join
+              </button>
+            <% end %>
+
           </div>
         </div>
       </div>
