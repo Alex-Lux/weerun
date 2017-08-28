@@ -14,6 +14,19 @@ class RunsController < ApplicationController
     end
   end
 
+  def new
+    @run = Run.new
+  end
+
+  def create
+    @run = Run.new(run_params)
+    @run.user = current_user
+
+    if @run.save
+       redirect_to run_path(@run)
+  end
+end
+
   private
 
   def run_params

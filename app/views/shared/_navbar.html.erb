@@ -10,7 +10,7 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "Create a Run", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Create a Run", new_run_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Manage my Runs", "#", class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Logout", "#", class: "navbar-wagon-item navbar-wagon-link" %>
 

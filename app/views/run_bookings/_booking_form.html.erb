@@ -9,9 +9,12 @@
         </button>
       </div>
       <div class="modal-body">
+
         <p><b>Distance:</b> <%= @run.run_distance %>km</p>
         <p><b>Pace:</b> <%= @run.pace %>min/km</p>
-        <p><b>Groupe size:</b> <%= @run.group_number %> people max</p>
+        <p><b>Group size:</b> <%= @run.group_number %> people max</p>
+        <p><b>Type:</b> <%= @run.incline %></p>
+
       <div>
         <p><b>Location: </b><%= @run.location %></p>
         <p><b>Time: </b><%= @run.date_time %></p>
