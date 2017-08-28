@@ -8,8 +8,8 @@
           <div class="card-description">
             <h2><%= @run.name %></h2>
             <p><b>When: </b><%= @run.date_time %></p>
-            <p><b>Distance: </b><%= @run.distance %></p>
-            <p><b>Run Pace: </b><%= @run.pace %></p>
+            <p><b>Distance: </b><%= @run.distance %>km</p>
+            <p><b>Run Pace: </b><%= @run.pace %>min/km</p>
 <!--             <p><b>Run Incline: </b><%= @run.incline %></p>
             <p><b>Elevation Gain: </b><%= @run.elevation_gain %></p> -->
 <!--             <p><b>WeatherConditions: </b><%= @run.all_weather  %></p> -->
@@ -29,7 +29,7 @@
             <div class="card-category"><%= @run.user.gender %></div>
             <div class="card-description">
               <h2><%= @run.user.first_name %> <%= @run.user.last_name %></h2>
-              <p><b>Languages: </b><%= @run.user.language_spoken %></p>
+              <p><b>Language: </b><%= @run.user.language_spoken %></p>
               <p><b>About: </b><%= @run.user.description %></p>
               <p><b>Run Pace: </b><%= @run.user.pace %></p>
             </div>

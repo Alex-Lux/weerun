@@ -1,19 +1,21 @@
 .card-run {
-  height: 400px;
+  height: 300px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
   background-position: center;
   color: white;
   position: relative;
+  border-radius: 1%;
 }
 
 .card {
-  height: 175px;
+  height: 200px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
   background-position: center;
   color: white;
   position: relative;
+  border-radius: 1%;
 }
 .card-user {
   position: absolute;
@@ -21,6 +23,8 @@
   top: 10px;
   width: 100px;
   border-radius: 50%;
+  color: white;
+  background-color: #21273D;
 }
 .card-category {
   position: absolute;
@@ -35,13 +39,12 @@
   left: 10px;
 }
 .card-description h2 {
-  font-size: 24px;
+  font-size: 30px;
 }
 .card-description p {
-  font-size: 14px;
-  opacity: 0.7;
-  font-weight: lighter;
-}
+  font-size: 18px;
+  opacity: 1;
+ }
 .card-link {
   position: absolute;
   top: 0;
