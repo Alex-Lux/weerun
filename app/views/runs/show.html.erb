@@ -1,6 +1,5 @@
   <div class="container">
     <div class="row">
-      <br>
 
       <div class="col-xs-12 col-md-6 text-left">
 
@@ -9,13 +8,13 @@
           <div class="card-description">
             <h2><%= @run.name %></h2>
             <p><b>When: </b><%= @run.date_time %></p>
-            <p><b>Distance: </b><%= @run.distance %></p>
-            <p><b>Run Pace: </b><%= @run.pace %></p>
-            <p><b>Run Incline: </b><%= @run.incline %></p>
-            <p><b>Elevation Gain: </b><%= @run.elevation_gain %></p>
-            <p><b>WeatherConditions: </b><%= @run.all_weather  %></p>
+            <p><b>Distance: </b><%= @run.distance %>km</p>
+            <p><b>Run Pace: </b><%= @run.pace %>min/km</p>
+<!--             <p><b>Run Incline: </b><%= @run.incline %></p>
+            <p><b>Elevation Gain: </b><%= @run.elevation_gain %></p> -->
+<!--             <p><b>WeatherConditions: </b><%= @run.all_weather  %></p> -->
             <p><b>Number of people: </b><%= @run.group_number %></p>
-            <p><b>Languages: </b><%= @run.language_spoken %></p>
+<!--             <p><b>Languages: </b><%= @run.language_spoken %></p> -->
             <p><b>Details: </b><%= @run.description %></p>
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#booking">
@@ -25,12 +24,12 @@
         </div>
       </div>
       <div class="col-xs-12 col-md-6 text-left">
-        <div class="card-run">
-          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)">
+        <div class="card-run" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)">
+          <div class="card">
             <div class="card-category"><%= @run.user.gender %></div>
             <div class="card-description">
               <h2><%= @run.user.first_name %> <%= @run.user.last_name %></h2>
-              <p><b>Languages: </b><%= @run.user.language_spoken %></p>
+              <p><b>Language: </b><%= @run.user.language_spoken %></p>
               <p><b>About: </b><%= @run.user.description %></p>
               <p><b>Run Pace: </b><%= @run.user.pace %></p>
             </div>
