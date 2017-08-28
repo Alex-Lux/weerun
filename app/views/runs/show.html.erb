@@ -6,7 +6,7 @@
         <div class="card-run" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= image_path(@run.photo) %>);">
           <div class="card-category"><%= @run.terrain %></div>
           <div class="card-description">
-            <h2><%= @run.name %></h2>
+            <h2><%= @run.name %> at <%= @run.location %></h2>
             <p><b>When: </b><%= @run.date_time %></p>
             <p><b>Distance: </b><%= @run.run_distance %>km</p>
             <p><b>Run Pace: </b><%= @run.pace %>min/km</p>
