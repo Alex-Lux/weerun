@@ -31,7 +31,7 @@ puts 'Creating 10 fake runners...'
   run = Run.new(
     user_id: user.id,
     location: Faker::Address.city,
-    distance: rand(5..40),
+    run_distance: rand(5..40),
     pace: rand(5..8),
     group_number: rand(2..10),
     remote_photo_url: "http://loremflickr.com/320/240/path",
