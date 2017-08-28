@@ -5,6 +5,7 @@ class RunsController < ApplicationController
   end
 
   def show
+
     @run = Run.find(params[:id])
 
     @hash = Gmaps4rails.build_markers(@run) do |run, marker|
@@ -12,6 +13,43 @@ class RunsController < ApplicationController
       marker.lng run.longitude
     end
   end
+
+
+  def edit
+    @run = Run.find(params[:id])
+  end
+
+  def update
+    @run = Run.find(params[:id])
+
+    if @run.update(run_params)
+      redirect_to run_path(@run)
+    end
+
+  end
+
+
+  def destroy
+    @run = Run.find(params[:id])
+
+
+    if @run.destroy
+      redirect_to runs_search_path
+    end
+  end
+
+  def new
+    @run = Run.new
+  end
+
+  def create
+    @run = Run.new(run_params)
+    @run.user = current_user
+
+    if @run.save
+       redirect_to run_path(@run)
+  end
+end
 
   private
 
