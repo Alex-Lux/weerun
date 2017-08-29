@@ -1,0 +1,54 @@
+.show-page__wrapper {
+  background-color: rgba(255, 255, 255, 0.5);
+  height: calc(100vh - 90px);
+  position: fixed;
+  overflow: hidden;
+  top: 90px;
+  width: 100vw;
+}
+
+.show-page__container {
+
+}
+
+.show-page__user-row {
+  margin: 30px 0 30px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  img {
+    border-radius: 50%;
+    padding: 10%;
+  }
+  button {
+    width: 100%;
+  }
+  .thumbnail {
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
+    padding: 10%;
+    border-radius: 10%;
+  }
+}
+
+.show-page__cta-row {
+
+}
+
+.show-page__runners-row {
+  background-color: rgba(255, 255, 255, 0.5);
+  display: flex;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.show-page__details-row {
+   margin-top: 50px;
+}
+
+
+.show-page__avatar-column {
+
+}
