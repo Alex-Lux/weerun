@@ -1,18 +1,37 @@
 
-<div class="col-xs-12 col-sm-6">
-  <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= image_path(run.photo) %>);">
-    <h3><%= run.name %></h4>
-    <p>Distance: <%= run.run_distance %>kms</p>
-    <p>Pace: <%= run.pace %>min/km</p>
-    <p>Starting: <%= run.date_time %></p>
+<div id="run-<%= run.id %>" class="col-xs-12 col-sm-6 col-lg-4 run-card-wrapper padded-top">
+  <div class="run-card-container">
 
-       <p><b>USER: </b><%= run.user.email %></p>
-    <img class="card-user" src="<%= image_path(run.user.photo) %>">
-    <%= link_to "", run, class: "card-link" %>
+
+      <!-- Run Image and Owner Avatar -->
+      <div class="run-card-image" style="background-image: url(<%= cl_image_path(run.photo) %>);">
+        <div class="avatar-rounded">
+            <% if run.user.photo %>
+
+              <%= image_tag run.user.photo, class: "avatar-card"%>
+
+            <% end %>
+        </div>
+      </div>
+
+      <!-- Run Bottom Row (Price, Name, Duration, Sport)  -->
+      <div class="run-card-details">
+        <div class="card-row">
+          <span class="run-card-name"><%= run.name.titleize %> | </span>
+          <span class="run-card-location">Lisbon</span>
+        </div>
+        <div class="card-row">
+          <span class="run-card-distance"><%= run.run_distance %> km |</span>
+          <span class="run-card-pace"><%= run.pace %> min/km</span>
+        </div>
+        <div class="card-row">
+          <span class="run-card-datetime"> 28 Oct 2017</span>
+        </div>
+      </div>
+
+      <%= link_to run, class: "run-card-link" do%>
+      <% end %>
   </div>
-    </div>
-
-
-
+</div>
 
 
