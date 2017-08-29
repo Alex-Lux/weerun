@@ -17,4 +17,86 @@
       </div>
     </div>
   </div>
+  <div class="row">
+     <div class="col-xs-12 col-md-8 col-md-offset-2">
+
+      <!-- <table> -->
+
+        <% @user_created_runs.each do |run| %>
+              <h3> <%= run.name %></h3>
+
+              <% run.run_bookings.each do |run_booking| %>
+                <h3> Status: <%= run_booking.status %> </h3>
+                <p> Name: <%= run_booking.user.first_name %> </p>
+                <p> Email: <%= run_booking.user.email %> </p>
+
+
+                <%= form_tag run_run_booking_path(run, run_booking), method: :patch do %>
+                  <%= hidden_field_tag 'user_to_approve_id', run_booking.user.id %>
+
+                  <% if run_booking.status == "Pending" %>
+                    <%= submit_tag 'Approve', class: 'btn btn-primary' %>
+                  <% else %>
+                    <%= submit_tag 'Cancel', class: 'btn btn-warning' %>
+                  <% end %>
+
+                <% end %>
+
+              <% end %>
+        <% end %>
+
+      <!-- </table> -->
+     </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Runs i'm running</h2>
+      <% current_user.run_bookings.each do |run_booking| %>
+        <p>Run name: <%= run_booking.run.name %> </p>
+        <p>Run creator: <%= run_booking.run.user.email %> </p>
+
+        <p>Status of my runs: <%= run_booking.status %> </p>
+      <% end %>
+    </div>
+  </div>
 </div>
+
+
+<!-- <table>
+  <tr>
+    <th>Company</th>
+    <th>Contact</th>
+    <th>Country</th>
+  </tr>
+  <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Centro comercial Moctezuma</td>
+    <td>Francisco Chang</td>
+    <td>Mexico</td>
+  </tr>
+  <tr>
+    <td>Ernst Handel</td>
+    <td>Roland Mendel</td>
+    <td>Austria</td>
+  </tr>
+  <tr>
+    <td>Island Trading</td>
+    <td>Helen Bennett</td>
+    <td>UK</td>
+  </tr>
+  <tr>
+    <td>Laughing Bacchus Winecellars</td>
+    <td>Yoshi Tannamuri</td>
+    <td>Canada</td>
+  </tr>
+  <tr>
+    <td>Magazzini Alimentari Riuniti</td>
+    <td>Giovanni Rovelli</td>
+    <td>Italy</td>
+  </tr>
+</table> -->
