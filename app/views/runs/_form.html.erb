@@ -1,3 +1,8 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+<div class="form-login">
+
 <%= simple_form_for(@run) do |f| %>
   <%= f.input :name, label: "Run Title" %>
   <%= f.input :location, label: "Starting Location" %>
@@ -9,11 +14,16 @@
 
   <%= f.input :all_weather, label: "Run will go ahead in all weather conditions" %>
   <%= f.input :group_type, collection: ["women only", "men only", "all welcome"] %>
-  <%= f.input :terrain, collection: ["road", "mountain", "beach", "park", "other"] %>
+  <%= f.input :terrain, collection: ["road", "mountain", "beach", "park", "city", "forest", "other"] %>
   <%= f.input :elevation_gain %>
   <%= f.input :description %>
    <%= f.input :photo, label: "Photo of the Run" %>
   <%= f.input :photo_cache, as: :hidden %>
   <%= f.submit %>
 <% end %>
+
+</div>
+  </div>
+  </div>
+</div>
 
