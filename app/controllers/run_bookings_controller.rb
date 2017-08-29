@@ -13,15 +13,24 @@ class RunBookingsController < ApplicationController
     @run_booking.user = current_user
     @run_booking.status = "Pending"
 
-
     if @run_booking.save!
        redirect_to run_path(@run), notice: "Your request was successfully sent"
     end
   end
 
   def update
+
+    @user_to_approve = User.find(params[:user_to_approve_id])
     @run_booking = RunBooking.find(params[:id])
-    @run_booking.update(params[:run_booking])
+
+    if @run_booking.status == "Accepted"
+      @run_booking.status = "Pending"
+    else
+      @run_booking.status = "Accepted"
+    end
+    @run_booking.save!
+
+    redirect_to runner_path(current_user)
   end
 
   def show
@@ -38,12 +47,12 @@ class RunBookingsController < ApplicationController
   end
 
 
-  def approve_booking
-    @run_booking = RunBooking.find(params[:id])
-    @run_booking.status = "approved"
-    @run_booking.save
-    redirect_to run_path(@run), notice: "A booking from #{@booking.user_id} has been accepted"
-  end
+  # def approve_booking
+  #   @run_booking = RunBooking.find(params[:id])
+  #   @run_booking.status = "approved"
+  #   @run_booking.save
+  #   redirect_to run_path(@run), notice: "A booking from #{@booking.user_id} has been accepted"
+  # end
 
 private
 
