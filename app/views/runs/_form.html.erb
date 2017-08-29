@@ -1,29 +1,38 @@
 <div class="container">
+  <div class="row text-center">
+    <h2>Create Run</h2>
+  </div>
   <div class="row">
-    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
-<div class="form-login">
+    <div class="col-xs-12 col-sm-6">
+      <div class="form-login">
+        <%= simple_form_for(@run) do |f| %>
+          <%= f.input :name, label: "Run Title" %>
+          <%= f.input :location, label: "Starting Location" %>
+          <%= f.input :date_time, label: "Starting Date & Time" %>
+          <%= f.input :run_distance, as: :distance %>
+          <%= f.input :pace, as: :pace, label: "Average Pace"%>
+          <%= f.input :incline, collection: ["flat", "some hills", "very hilly"] %>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 text-left">
+      <div class="form-login">
+          <%= f.input :group_number, label: "Maximum Group Number" %>
+          <%= f.input :all_weather, label: "Run will go ahead in all weather conditions" %>
+          <%= f.input :group_type, collection: ["women only", "men only", "all welcome"] %>
+          <%= f.input :terrain, collection: ["road", "mountain", "beach", "park", "city", "forest", "other"] %>
+          <%= f.input :elevation_gain %>
+          <%= f.input :description %>
+           <%= f.input :photo, label: "Photo of the Run" %>
+          <%= f.input :photo_cache, as: :hidden %>
 
-<%= simple_form_for(@run) do |f| %>
-  <%= f.input :name, label: "Run Title" %>
-  <%= f.input :location, label: "Starting Location" %>
-  <%= f.input :date_time, label: "Starting Date & Time" %>
-  <%= f.input :run_distance, as: :distance %>
-  <%= f.input :pace, as: :pace, label: "Average Pace"%>
-  <%= f.input :incline, collection: ["flat", "some hills", "very hilly"] %>
-  <%= f.input :group_number, label: "Maximum Group Number" %>
-
-  <%= f.input :all_weather, label: "Run will go ahead in all weather conditions" %>
-  <%= f.input :group_type, collection: ["women only", "men only", "all welcome"] %>
-  <%= f.input :terrain, collection: ["road", "mountain", "beach", "park", "city", "forest", "other"] %>
-  <%= f.input :elevation_gain %>
-  <%= f.input :description %>
-   <%= f.input :photo, label: "Photo of the Run" %>
-  <%= f.input :photo_cache, as: :hidden %>
-  <%= f.submit %>
-<% end %>
-
-</div>
+      </div>
+    </div>
   </div>
-  </div>
+  <div class="row text-center">
+            <div class="form-actions">
+              <%= f.button :submit, "Create Run", class: "btn btn-primary btn-update" %><% end %>
+            </div>
+      </div>
+
 </div>
 
