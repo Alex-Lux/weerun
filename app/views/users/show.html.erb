@@ -17,4 +17,100 @@
       </div>
     </div>
   </div>
+  <div class="row">
+     <div class="col-xs-12 col-md-8 col-md-offset-2">
+
+      <table>
+        <tr>
+          <th>Run</th>
+          <th>Created by</th>
+          <th>Status</th>
+          <th>Email</th>
+        </tr>
+
+        <% @user_created_runs.each do |run| %>
+          <tr>
+          <th><h3> <%= run.name %></h3></th>
+
+              <% run.run_bookings.each do |run_booking| %>
+                <th><p> Name: <%= run_booking.user.first_name %> </p></th>
+                <th><h3> Status: <%= run_booking.status %> </h3></th>
+                <th><p> Email: <%= run_booking.user.email %> </p></th>
+                <th><%= form_tag run_run_booking_path(run, run_booking), method: :patch do %>
+                  <%= hidden_field_tag 'user_to_approve_id', run_booking.user.id %>
+
+                  <% if run_booking.status == "Pending" %>
+                    <%= submit_tag 'Approve', class: 'btn btn-primary' %>
+                  <% else %>
+                    <%= submit_tag 'Cancel', class: 'btn btn-warning' %>
+                  <% end %>
+
+                <% end %></th>
+
+              <% end %>
+        <% end %>
+        <tr>
+      </table>
+     </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Runs i'm running</h2>
+      <table>
+        <tr>
+          <th>Run</th>
+          <th>Run owner</th>
+          <th>My status</th>
+        </tr>
+
+        <% current_user.run_bookings.each do |run_booking| %>
+        <tr>
+          <th><p> <%= run_booking.run.name %> </p></th>
+          <th><p> <%= run_booking.run.user.first_name %> <%= run_booking.run.user.last_name %></p></th>
+          <th><p> <%= run_booking.status %> </p></th>
+        </tr>
+      <% end %>
+
+    </div>
+  </div>
 </div>
+
+
+<!-- <table>
+  <tr>
+    <th>Company</th>
+    <th>Contact</th>
+    <th>Country</th>
+  </tr>
+  <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Centro comercial Moctezuma</td>
+    <td>Francisco Chang</td>
+    <td>Mexico</td>
+  </tr>
+  <tr>
+    <td>Ernst Handel</td>
+    <td>Roland Mendel</td>
+    <td>Austria</td>
+  </tr>
+  <tr>
+    <td>Island Trading</td>
+    <td>Helen Bennett</td>
+    <td>UK</td>
+  </tr>
+  <tr>
+    <td>Laughing Bacchus Winecellars</td>
+    <td>Yoshi Tannamuri</td>
+    <td>Canada</td>
+  </tr>
+  <tr>
+    <td>Magazzini Alimentari Riuniti</td>
+    <td>Giovanni Rovelli</td>
+    <td>Italy</td>
+  </tr>
+</table> -->

@@ -5,6 +5,8 @@
     <p>Distance: <%= run.run_distance %>kms</p>
     <p>Pace: <%= run.pace %>min/km</p>
     <p>Starting: <%= run.date_time %></p>
+
+       <p><b>USER: </b><%= run.user.email %></p>
     <img class="card-user" src="<%= image_path(run.user.photo) %>">
     <%= link_to "", run, class: "card-link" %>
   </div>
