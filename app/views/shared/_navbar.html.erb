@@ -7,6 +7,12 @@
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
+      <div class="navbar-wagon">
+        <%= render 'pages/search_bar' unless @home %>
+
+      </div>
+
+
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
