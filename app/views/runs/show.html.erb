@@ -5,7 +5,7 @@
 
       <div class="show-page__search-row row">
         <div class="show-page__search-column col-xs-12 col-md-offset-0 col-md-3 text-left">
-          <%= link_to '<< back', runs_search_path, class: "btn btn-primary" %>
+          <%= link_to '<< back', runs_search_path, class: "btn btn-default" %>
         </div>
         <div class="show-page__search-column-right col-xs-12 col-md-offset-9 col-md-3 text-right">
           <% if @run.user == current_user %>
@@ -18,7 +18,7 @@
                   <%= link_to 'Cancel', run_run_booking_path(@run, @run.run_bookings.find_by(user: current_user), previous_page: "run"), method: :delete, class: "btn btn-warning" %>
                   <% else %>
 
-                    <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#booking">
+                    <button type="button" class="btn btn-primary btn-block btn-booking" data-toggle="modal" data-target="#booking">
                       Request to join
                     </button>
 

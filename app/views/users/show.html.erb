@@ -31,15 +31,18 @@
 
         <% @user_created_runs.each do |run| %>
           <tr>
+            <td> <%= link_to run.name, run_path(run) %> </td>
+            <% if run.run_bookings.present? %>
+
               <% run.run_bookings.each do |run_booking| %>
-                <td> <%= link_to run.name, run_path(run) %> </td>
+
                 <td> <%= run_booking.user.first_name %> <%= run_booking.user.last_name %> </td>
                 <td> <%= run_booking.status %> </td>
                 <td> <%= run_booking.user.email %> </td>
                 <td> <%= form_tag run_run_booking_path(run, run_booking), method: :patch do %>
                   <%= hidden_field_tag 'user_to_approve_id', run_booking.user.id %>
                   <% if run_booking.status == "Pending" %>
-                    <%= submit_tag 'Approve', class: 'btn btn-primary btn-block' %>
+                    <%= submit_tag 'Approve', class: 'btn btn-success btn-block' %>
                   <% else %>
                     <%= submit_tag 'Cancel', class: 'btn btn-warning btn-block' %>
                   <% end %>
@@ -54,9 +57,15 @@
 
                   <% end %>
                 <% end %>
-                </td>
+
               <% end %>
-        <% end %>
+              </td>
+              <% else %>
+                <td colspan="3"></td>
+                <td><%= link_to 'Edit', edit_run_path(run), class: "btn btn-primary btn-block"  %></td>
+                <td><%= link_to 'Delete',run_path(run), method: :delete, class: "btn btn-danger btn-block"  %></td>
+              <% end %>
+          <% end %>
         </tr>
       </table>
      </div>
@@ -70,6 +79,7 @@
           <th>Run</th>
           <th>Run host</th>
           <th>My request status</th>
+          <th>Action</th>
         </tr>
 
         <% current_user.run_bookings.each do |run_booking| %>
@@ -77,48 +87,10 @@
           <td> <%= link_to run_booking.run.name, run_path(run_booking.run) %> </td>
           <td> <%= run_booking.run.user.first_name %> <%= run_booking.run.user.last_name %> </td>
           <td> <%= run_booking.status %> </td>
+          <td><%= link_to 'Cancel', run_run_booking_path(run_booking.run, run_booking), method: :delete, class: "btn btn-warning btn-block" %></td>
         </tr>
       <% end %>
 
     </div>
   </div>
 </div>
-
-
-<!-- <table>
-  <tr>
-    <th>Company</th>
-    <th>Contact</th>
-    <th>Country</th>
-  </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-  </tr>
-  <tr>
-    <td>Ernst Handel</td>
-    <td>Roland Mendel</td>
-    <td>Austria</td>
-  </tr>
-  <tr>
-    <td>Island Trading</td>
-    <td>Helen Bennett</td>
-    <td>UK</td>
-  </tr>
-  <tr>
-    <td>Laughing Bacchus Winecellars</td>
-    <td>Yoshi Tannamuri</td>
-    <td>Canada</td>
-  </tr>
-  <tr>
-    <td>Magazzini Alimentari Riuniti</td>
-    <td>Giovanni Rovelli</td>
-    <td>Italy</td>
-  </tr>
-</table> -->

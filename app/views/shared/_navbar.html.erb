@@ -17,8 +17,6 @@
 
       <!-- Links when logged in -->
       <%= link_to "Create a Run", new_run_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Manage my Runs", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Logout", "#", class: "navbar-wagon-item navbar-wagon-link" %>
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
@@ -28,7 +26,7 @@
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
               <%= link_to runner_path(current_user) do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+                <i class="fa fa-user"></i> My Runs
               <% end %>
             </li>
             <li>
