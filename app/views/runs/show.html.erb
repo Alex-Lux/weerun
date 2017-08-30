@@ -1,11 +1,11 @@
 <div  id="map" style="width: 100%; height: 200%px; z-index: -1; position: absolute;  bottom: 0; background-size: 150% 150% !important;"></div>
 
   <div class="show-page__wrapper wrapper" >
-    <div class="show-page__container container">
+    <div class="show-page__container">
 
       <div class="show-page__search-row row">
         <div class="show-page__search-column col-xs-12 col-md-offset-9 col-md-3 text-left">
-          <%= link_to '<< back to my search', runs_search_path, class: "btn btn-primary" %>
+          <%= link_to '<< back', runs_search_path, class: "btn btn-primary" %>
           <% if @run.user == current_user %>
 
                 <%= link_to 'Edit', edit_run_path(@run), class: "btn btn-primary"  %>
@@ -43,7 +43,7 @@
 
 
       <div class="show-page__runners-row row">
-      <h3>Other runners attending:</h3>
+      <h3>Other Runners Attending:</h3>
       <!-- HAS TO BE DELETED -->
         <% 10.times do %>
           <div class="col-xs-3 col-md-1">
@@ -76,16 +76,16 @@
           <div class="col-md-9">
 
 
-            <h3><%= @run.name %> with <%= @run.user.first_name %> <%= @run.user.last_name %></h3>
+            <h3><%= @run.name.titleize %> with <%= @run.user.first_name %> <%= @run.user.last_name %></h3>
             <p> <span><i class="fa fa-clock-o"></i></span>    <%= @run.user.pace %> <em> min / km</em></p>
             <p><strong></strong>
-              <% 3.times do %>
+              <% 4.times do %>
               <i class="fa fa-star"></i>
             <% end %>
             </p>
           </div>
           <div class="col-md-3 hidden-sm hidden-xs">
-            <em>I'm a nice person and <%= @run.user.description %></em>
+            <em><%= @run.user.description %></em>
 
           </div>
 

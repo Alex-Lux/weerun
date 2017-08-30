@@ -46,13 +46,30 @@
           <% end %>
 
           <% if action_name == 'show' %>
-            <p><strong>Will go ahead in all weather  </strong><%= @run.all_weather  %></p>
-            <p><strong>Max Runners: </strong><%= @run.group_number %></p>
-            <p><strong>Group Type: </strong><%= @run.group_type %></p>
-            <p><strong>Incline: </strong><%= @run.incline %></p>
-            <p><strong>Terrain: </strong><%= @run.terrain %></p>
-            <p><strong>Elevation Gain: </strong><%= @run.elevation_gain %></p>
-
+            <div class="card-row">
+              <span class="run-card-title"><strong><%= run.location.titleize %></strong></span>
+            </div>
+            <div class="card-row">
+              <span class="run-card-distance"><%= run.run_distance %> km |</span>
+              <span class="run-card-pace"><%= run.pace %> min/km</span>
+            </div>
+            <div class="card-row">
+              <span class="run-card-datetime"> 28 Oct 2017</span>
+            </div>
+            <div class="card-row">
+              <span class="run-card-max">Max Runners <%= run.group_number %> |</span>
+              <span class="run-card-type"><%= run.group_type.capitalize %></span>
+            </div>
+            <div class="card-row">
+              <span class="run-card-weather"><% if run.all_weather? %> <%= "Will go ahead in all weather" %><% end %></span>
+            </div>
+             <div class="card-row">
+              <span class="run-card-terrain"><%= run.terrain.capitalize %></span>
+            </div>
+            <div class="card-row">
+              <span class="run-card-incline"><%= run.incline.capitalize %> |</span>
+              <span class="run-card-elevation_gain">Elevation gain: <%= run.elevation_gain %></span>
+            </div>
           <% end %>
         </div>
         <% unless action_name == 'show' %>
