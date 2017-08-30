@@ -40,6 +40,7 @@
       <!-- Run Bottom Row (Price, Name, Duration, Sport)  -->
       <div class="run-card-details">
         <div class="card-row">
+
           <% unless action_name == 'show' %>
             <span class="run-card-name"><%= run.name.titleize %> | </span>
             <span class="run-card-location">Lisbon</span>
@@ -71,6 +72,7 @@
               <span class="run-card-elevation_gain">Elevation gain: <%= run.elevation_gain %></span>
             </div>
           <% end %>
+
         </div>
         <% unless action_name == 'show' %>
           <div class="card-row">

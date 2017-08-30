@@ -2,12 +2,14 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :search]
 
   def home
+     @home = true
   end
   def search
 
     @runs = Run.where.not(latitude: nil, longitude: nil)
 
     @runs = @runs.near(params[:search], 50) if params[:search].present?
+
     if  params[:run_distance].present?
       search_distance = params[:run_distance].to_i
       interval = search_distance * 0.3
