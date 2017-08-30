@@ -4,41 +4,35 @@
     <div class="show-page__container container">
 
       <div class="show-page__search-row row">
-        <div class="show-page__search-column col-xs-12 col-xs-offset-0 col-md-4 col-xs-offset-0 text-left">
+        <div class="show-page__search-column col-xs-12 col-md-offset-9 col-md-3 text-left">
           <%= link_to '<< back to my search', runs_search_path, class: "btn btn-primary" %>
+          <% if @run.user == current_user %>
+
+                <%= link_to 'Edit', edit_run_path(@run), class: "btn btn-primary"  %>
+                <%= link_to 'Delete',run_path(@run), method: :delete, class: "btn btn-danger"  %>
+
+            <% else %>
+                <% if current_user.run_bookings.where(run: @run).map(&:status).first == "Pending" %>
+
+                  <%= link_to 'Cancel', run_run_booking_path(@run, @run.run_bookings.find_by(user: current_user)), method: :delete, class: "btn btn-warning" %>
+                  <% else %>
+
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="booking">
+                      Request to join
+                    </button>
+
+              <% end %>
+            <% end %>
         </div>
       </div>
 
-      <h1 class="text-center"><%= @run.name.capitalize %> in <%= @run.location %></h1>
+      <!-- <h1 class="text-center"><%= @run.name.capitalize %> in <%= @run.location %></h1> -->
 
       <div class="show-page__user-row row">
-        <div class="show-page__avatar-column col-xs-12 col-md-4">
-          <%= cl_image_tag @run.user.photo, width: 300 %>
+        <div class="show-page__user-details-column col-xs-12 col-md-4">
+          <%= render @run %>
         </div>
-        <div class="show-page__avatar-column col-xs-12 col-md-6">
-          <div class="thumbnail">
-            <h2><%= @run.user.first_name %> <%= @run.user.last_name %></h2>
-            <p><b>Language: </b><%= @run.user.language_spoken %></p>
-            <p><b>Run Pace: </b><%= @run.user.pace %></p>
-            <p><b>About: </b><%= @run.user.description %></p>
-            <p><b>Rating: </b><%= %><b>Reviews: </b></p>
-            <% if @run.user == current_user %>
-
-                  <%= link_to 'Edit', edit_run_path(@run), class: "btn btn-primary"  %>
-                  <%= link_to 'Delete',run_path(@run), method: :delete, class: "btn btn-lg btn-danger"  %>
-
-              <% else %>
-                  <% if current_user.run_bookings.where(run: @run).map(&:status).first == "Pending" %>
-
-                    <%= link_to 'Cancel', run_run_booking_path(@run, @run.run_bookings.find_by(user: current_user)), method: :delete, class: "btn btn-lg btn-warning" %>
-                    <% else %>
-
-                      <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#booking">
-                        Request to join
-                      </button>
-
-                <% end %>
-              <% end %>
+        <div class="show-page_run-details-column col-xs-12 col-md-6">
           </div>
         </div>
       </div>
@@ -47,9 +41,16 @@
 
       </div>
 
-      <h2>Other people joining this run</h2>
 
       <div class="show-page__runners-row row">
+      <h3>Other runners attending:</h3>
+      <!-- HAS TO BE DELETED -->
+        <% 10.times do %>
+          <div class="col-xs-3 col-md-1">
+            <%= image_tag @run.user.photo, style: 'border-radius: 50%; width: 60px; border: 2px solid white;'  %>
+          </div>
+        <% end %>
+        <!-- WILL WORK ONCE OTHER RUNNERS SIGN UP -->
         <% @run.run_bookings.each do |booking| %>
           <% unless booking.user == @run.user %>
             <div class="show-page__column col-xs-3 col-md-1">
@@ -63,51 +64,48 @@
             </div>
           <% end %>
         <% end %>
+        <div class="show-page__user-avatar hidden-sm hidden-xs">
+          <%= image_tag @run.user.photo, style: 'border-radius: 50%;'  %>
+        </div>
+
       </div>
 
       <div class="show-page__details-row row">
 
-        <div class="show-page__column col-xs-12 col-md-3 text-center">
-          <div class="col-md-3">
-            <%= image_tag "https://image.flaticon.com/icons/svg/94/94148.svg", style: 'width: 100%;' %>
+        <div class="show-page__column col-xs-12 text-right">
+          <div class="col-md-9">
+
+
+            <h3><%= @run.name %> with <%= @run.user.first_name %> <%= @run.user.last_name %></h3>
+            <p> <span><i class="fa fa-clock-o"></i></span>    <%= @run.user.pace %> <em> min / km</em></p>
+            <p><strong></strong>
+              <% 3.times do %>
+              <i class="fa fa-star"></i>
+            <% end %>
+            </p>
           </div>
-          <div class="col-md-8">
+          <div class="col-md-3 hidden-sm hidden-xs">
+            <em>I'm a nice person and <%= @run.user.description %></em>
+
+          </div>
+
+
+
+
+
+
+            <!-- <p><strong>When </strong><%= @run.date_time %></p>
             <p><strong>When </strong><%= @run.date_time %></p>
-            <p><strong>When </strong><%= @run.date_time %></p>
-            <p><strong>Will go ahead in all weather  </strong><%= @run.all_weather  %></p>
-          </div>
-        </div>
+            <p><strong>Will go ahead in all weather  </strong><%= @run.all_weather  %></p> -->
 
-        <div class="show-page__column col-xs-12 col-md-3 text-center">
-          <div class="col-md-3">
-            <%= image_tag "https://image.flaticon.com/icons/svg/94/94148.svg", style: 'width: 100%;' %>
-          </div>
-          <div class="col-md-8">
-            <p><strong>Distance: </strong></b><%= @run.run_distance %>km</p>
-            <p><strong>Pace: </strong><%= @run.pace %>min/km</p>
-          </div>
-        </div>
+            <!-- <p><strong>Distance: </strong></b><%= @run.run_distance %>km</p>
+            <p><strong>Pace: </strong><%= @run.pace %>min/km</p> -->
 
-        <div class="show-page__column col-xs-12 col-md-3 text-center">
-          <div class="col-md-3">
-            <%= image_tag "https://image.flaticon.com/icons/svg/94/94148.svg", style: 'width: 100%;' %>
-          </div>
-          <div class="col-md-8">
-             <p><strong>Max Runners: </strong><%= @run.group_number %></p>
-            <p><strong>Group Type: </strong><%= @run.group_type %></p>
-          </div>
-          </div>
-
-
-        <div class="show-page__column col-xs-12 col-md-3 text-center">
-          <div class="col-md-3">
-            <%= image_tag "https://image.flaticon.com/icons/svg/94/94148.svg", style: 'width: 100%;' %>
-          </div>
-          <div class="col-md-8">
-            <p><strong>Incline: </strong><%= @run.incline %></p>
+            <!--  <p><strong>Max Runners: </strong><%= @run.group_number %></p>
+            <p><strong>Group Type: </strong><%= @run.group_type %></p> -->
+            <!-- <p><strong>Incline: </strong><%= @run.incline %></p>
             <p><strong>Terrain: </strong><%= @run.terrain %></p>
-            <p><strong>Elevation Gain: </strong><%= @run.elevation_gain %></p>
-          </div>
+            <p><strong>Elevation Gain: </strong><%= @run.elevation_gain %></p> -->
         </div>
 
       </div>
@@ -138,23 +136,6 @@
           Button trigger modal
             </div>
 
-            <%# if @run.user == current_user %>
-
-                <%#= link_to 'Edit', edit_run_path(@run), class: "btn btn-primary"  %>
-                <%#= link_to 'Delete',run_path(@run), method: :delete, class: "btn btn-danger"  %>
-
-            <%# else %>
-                <% #if current_user.run_bookings.where(run: @run).map(&:status).first == "Pending" %>
-
-                  <%#= link_to 'Cancel', run_run_booking_path(@run, @run.run_bookings.find_by(user: current_user)), method: :delete, class: "btn btn-warning" %>
-                  <%# else %>
-
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#booking">
-                      Request to join
-                    </button>
-
-              <%# end %>
-            <%# end %>
 
           </div>
         </div>

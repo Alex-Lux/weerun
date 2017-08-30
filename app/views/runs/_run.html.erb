@@ -1,6 +1,6 @@
 
-<div id="run-<%= run.id %>" class="col-xs-12 col-sm-6 col-lg-4 run-card-wrapper padded-top">
-  <div class="run-card-container">
+<div id="run-<%= run.id %>" class="<%= 'col-xs-12 col-sm-6 col-lg-4' unless action_name == 'show' %> run-card-wrapper padded-top">
+  <div class="run-card-container <%= 'run-card-show' if action_name == 'show' %>">
 
 
       <!-- Run Image and Owner Avatar -->
@@ -20,16 +20,19 @@
         </div>
       <% else %>
         <% @photo = run.photo %>
-        <div class="run-card-image" style="background-image: url(<%= cl_image_path(@photo) %>);">
-          <div class="avatar-rounded">
-              <% if run.user.photo.blank? %>
-                <% @photo = "profile.jpg" %>
-                <%= image_tag @photo, class: "avatar-card"%>
-              <% else %>
-                <% @photo = run.user.photo %>
-                <%= image_tag @photo, class: "avatar-card"%>
-              <% end %>
-          </div>
+        <div class="run-card-image <%= 'run-card-show-image' if action_name == 'show' %>" style="background-image: url(<%= cl_image_path(@photo) %>);">
+          <% unless action_name == 'show' %>
+            <div class="avatar-rounded">
+                <% if run.user.photo.blank? %>
+                  <% @photo = "profile.jpg" %>
+                  <%= image_tag @photo, class: "avatar-card"%>
+                <% else %>
+                  <% @photo = run.user.photo %>
+                  <%= image_tag @photo, class: "avatar-card"%>
+                <% end %>
+            </div>
+
+          <% end %>
         </div>
       <% end %>
 
@@ -37,16 +40,30 @@
       <!-- Run Bottom Row (Price, Name, Duration, Sport)  -->
       <div class="run-card-details">
         <div class="card-row">
-          <span class="run-card-name"><%= run.name.titleize %> | </span>
-          <span class="run-card-location">Lisbon</span>
+          <% unless action_name == 'show' %>
+            <span class="run-card-name"><%= run.name.titleize %> | </span>
+            <span class="run-card-location">Lisbon</span>
+          <% end %>
+
+          <% if action_name == 'show' %>
+            <p><strong>Will go ahead in all weather  </strong><%= @run.all_weather  %></p>
+            <p><strong>Max Runners: </strong><%= @run.group_number %></p>
+            <p><strong>Group Type: </strong><%= @run.group_type %></p>
+            <p><strong>Incline: </strong><%= @run.incline %></p>
+            <p><strong>Terrain: </strong><%= @run.terrain %></p>
+            <p><strong>Elevation Gain: </strong><%= @run.elevation_gain %></p>
+
+          <% end %>
         </div>
-        <div class="card-row">
-          <span class="run-card-distance"><%= run.run_distance %> km |</span>
-          <span class="run-card-pace"><%= run.pace %> min/km</span>
-        </div>
-        <div class="card-row">
-          <span class="run-card-datetime"> 28 Oct 2017</span>
-        </div>
+        <% unless action_name == 'show' %>
+          <div class="card-row">
+            <span class="run-card-distance"><%= run.run_distance %> km |</span>
+            <span class="run-card-pace"><%= run.pace %> min/km</span>
+          </div>
+          <div class="card-row">
+            <span class="run-card-datetime"> 28 Oct 2017</span>
+          </div>
+        <% end %>
       </div>
 
       <%= link_to run, class: "run-card-link" do%>

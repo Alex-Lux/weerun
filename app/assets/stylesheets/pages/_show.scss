@@ -15,7 +15,7 @@
 }
 
 .show-page__user-row {
-  margin: 30px 0 30px 0;
+  margin: 0 0 30px 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,7 +32,7 @@
     padding: 10%;
     border-radius: 10%;
 
-    h2 {
+    h3 {
       margin-top: -10px;
     }
   }
@@ -45,15 +45,37 @@
 .show-page__runners-row {
   background-color: rgba(255, 255, 255, 0.5);
   display: flex;
-  border-radius: 10px;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   padding: 10px 0;
-}
+  height: 80px;
+  position: absolute;
+  padding-left: 100px;
+  padding-right: 500px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+ }
 
 .show-page__details-row {
-   margin-top: 40px;
-
+  background-color: white;
+  color: black;
+  height: 150px;
+  position: absolute;
+  bottom: 80px;
+  padding-right: 500px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  .fa-star {
+    color: $brand-info;
+    font-size: 30px;
+  }
+  .hidden-xs {
+    display: flex;
+    align-items: center;
+    height: 156px;
+  }
 }
 
 
@@ -62,6 +84,13 @@
   position: absolute;
   left: 20px;
 }
-.show-page__avatar-column {
-
+.show-page__user-avatar {
+  img {
+    border: 5px solid white;
+    position: fixed;
+    bottom: -100px;
+    right: -100px;
+    width: 600px;
+    z-index: 3000;
+  }
 }
