@@ -26,31 +26,38 @@
           <th>Participant</th>
           <th>Status</th>
           <th>Email</th>
-          <th>Action</th>
+          <th colspan="2">Action</th>
         </tr>
 
         <% @user_created_runs.each do |run| %>
           <tr>
-          <td> <%= link_to run.name, run_path(run) %> </td>
-
               <% run.run_bookings.each do |run_booking| %>
+                <td> <%= link_to run.name, run_path(run) %> </td>
                 <td> <%= run_booking.user.first_name %> <%= run_booking.user.last_name %> </td>
                 <td> <%= run_booking.status %> </td>
                 <td> <%= run_booking.user.email %> </td>
-                <td><%= form_tag run_run_booking_path(run, run_booking), method: :patch do %>
+                <td> <%= form_tag run_run_booking_path(run, run_booking), method: :patch do %>
                   <%= hidden_field_tag 'user_to_approve_id', run_booking.user.id %>
-
                   <% if run_booking.status == "Pending" %>
-                    <%= submit_tag 'Approve', class: 'btn btn-primary' %>
+                    <%= submit_tag 'Approve', class: 'btn btn-primary btn-block' %>
                   <% else %>
-                    <%= submit_tag 'Cancel', class: 'btn btn-warning' %>
+                    <%= submit_tag 'Cancel', class: 'btn btn-warning btn-block' %>
                   <% end %>
+                <% end %>
+                </td>
+                <td>
+                <%= form_tag run_run_booking_path(run, run_booking), method: :delete do %>
+                  <%= hidden_field_tag 'user_to_decline_id', run_booking.user.id %>
+                  <% if run_booking.status == "Pending" %>
+                    <%= submit_tag 'Decline', class: 'btn btn-danger btn-block' %>
+                  <% else %>
 
-                <% end %></td>
-
+                  <% end %>
+                <% end %>
+                </td>
               <% end %>
         <% end %>
-        <tr>
+        </tr>
       </table>
      </div>
   </div>
@@ -61,8 +68,8 @@
       <table class="table table-striped">
         <tr>
           <th>Run</th>
-          <th>Run owner</th>
-          <th>My status</th>
+          <th>Run host</th>
+          <th>My request status</th>
         </tr>
 
         <% current_user.run_bookings.each do |run_booking| %>
