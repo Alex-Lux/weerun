@@ -53,7 +53,13 @@
         <% @run.run_bookings.each do |booking| %>
           <% unless booking.user == @run.user %>
             <div class="show-page__column col-xs-3 col-md-1">
-              <%= cl_image_tag booking.user.photo, style: 'border-radius: 50%; width: 100%;' %>
+              <% if booking.user.photo.blank? %>
+                <% @photo = "profile.jpg" %>
+                <%= image_tag @photo, style: 'border-radius: 50%; width: 100%;' %>
+              <% else %>
+                <% @photo = booking.user.photo %>
+                <%= cl_image_tag @photo, style: 'border-radius: 50%; width: 100%;' %>
+              <% end %>
             </div>
           <% end %>
         <% end %>
@@ -103,7 +109,9 @@
             <p><strong>Elevation Gain: </strong><%= @run.elevation_gain %></p>
           </div>
         </div>
+
       </div>
+
     </div>
   </div>
 </div>

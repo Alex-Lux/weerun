@@ -9,6 +9,9 @@
 
 .show-page__container {
 
+  h2 {
+    margin-top: -25px;
+  }
 }
 
 .show-page__user-row {
@@ -28,6 +31,10 @@
     border: none;
     padding: 10%;
     border-radius: 10%;
+
+    h2 {
+      margin-top: -10px;
+    }
   }
 }
 
@@ -45,8 +52,10 @@
 }
 
 .show-page__details-row {
-   margin-top: 50px;
+   margin-top: 40px;
+
 }
+
 
 .show-page__search-column {
   margin-top: 20px;
