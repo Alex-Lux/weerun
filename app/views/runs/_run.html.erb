@@ -4,15 +4,35 @@
 
 
       <!-- Run Image and Owner Avatar -->
-      <div class="run-card-image" style="background-image: url(<%= cl_image_path(run.photo) %>);">
-        <div class="avatar-rounded">
-            <% if run.user.photo %>
 
-              <%= image_tag run.user.photo, class: "avatar-card"%>
-
-            <% end %>
+      <% if run.photo.blank? %>
+        <% @photo = "http://www.placehold.it/80/80" %>
+        <div class="run-card-image" style="background-image: url(<%= cl_image_path(@photo) %>);">
+          <div class="avatar-rounded">
+               <% if run.user.photo.blank? %>
+                <% @photo = "profile.jpg" %>
+                <%= image_tag @photo, class: "avatar-card"%>
+              <% else %>
+                <% @photo = run.user.photo %>
+                <%= image_tag @photo, class: "avatar-card"%>
+              <% end %>
+          </div>
         </div>
-      </div>
+      <% else %>
+        <% @photo = run.photo %>
+        <div class="run-card-image" style="background-image: url(<%= cl_image_path(@photo) %>);">
+          <div class="avatar-rounded">
+              <% if run.user.photo.blank? %>
+                <% @photo = "profile.jpg" %>
+                <%= image_tag @photo, class: "avatar-card"%>
+              <% else %>
+                <% @photo = run.user.photo %>
+                <%= image_tag @photo, class: "avatar-card"%>
+              <% end %>
+          </div>
+        </div>
+      <% end %>
+
 
       <!-- Run Bottom Row (Price, Name, Duration, Sport)  -->
       <div class="run-card-details">
