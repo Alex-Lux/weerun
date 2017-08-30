@@ -39,11 +39,11 @@ class RunBookingsController < ApplicationController
 
   def destroy
     @run = Run.find(params["run_id"])
-
+    @user_to_decline = User.find(params[:user_to_decline_id])
     @run_booking = RunBooking.find(params[:id])
     @run_booking.destroy
 
-    redirect_to run_path(@run)
+    redirect_to runner_path(current_user)
   end
 
 

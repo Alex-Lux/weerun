@@ -8,7 +8,7 @@ class PagesController < ApplicationController
 
     @runs = Run.where.not(latitude: nil, longitude: nil)
 
-    @runs = @runs.near(params[:search], 20) if params[:search].present?
+    @runs = @runs.near(params[:search], 50) if params[:search].present?
 
     if  params[:run_distance].present?
       search_distance = params[:run_distance].to_i
