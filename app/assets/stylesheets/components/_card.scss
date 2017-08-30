@@ -9,11 +9,14 @@
   border-radius: 1%;
 }
 
-.card-image {
-    margin: 0;
-    width: 100%;
-    height: auto;
-    transition: 1s;
+.avatar-rounded {
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: -20px;
+  right: 20px;
 }
 
 .card-runner {

@@ -1,0 +1,93 @@
+.avatar-card {
+  height: 50px;
+  width: 50px;
+  margin: auto;
+  position: absolute;
+  border-radius: 50%;
+  bottom: -10px;
+  right: 10px;
+  border: 1px solid white;
+  background: white;
+}
+
+.run-card-wrapper {
+  padding-left: 7.5px !important;
+  padding-right: 7.5px !important;
+  // @include hover-state {
+  //   outline: none;
+  // }
+}
+
+.padded-top {
+  padding-top: 20px;
+}
+
+.run-card-container {
+  box-shadow: 0 2px 2px rgba(0,0,0,0.3);
+  background-size: cover !important;
+  background-color: white;
+  padding-bottom: 10px;
+  border-radius: 2px;
+  height: 330px;
+  position: relative;
+}
+
+.run-card-link {
+  color: black;
+  position: absolute !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  cursor: pointer !important;
+  z-index: 10;
+  background: black;
+  opacity: 0;
+//   @include hover-state {
+//     text-decoration: none;
+//     color: $text-dark;
+//     outline: none;
+//   }
+}
+
+.run-card-details {
+  margin-top: 10px;
+}
+
+.run-card-location{
+  font-weight: bold;
+}
+
+.run-card-name {
+  font-weight: bold;
+}
+
+.run-card-sports {
+  font-weight: lighter;
+}
+
+.run-card-duration {
+  font-weight: lighter;
+}
+
+.run-card-image {
+  position: relative;
+  height: 72%;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  // @include hover-state {
+  //   outline: none;
+  // }
+}
+
+.card-row {
+  padding: 0px 10px;
+  margin-top: 5px;
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow: ellipsis;
+  position:relative;
+  z-index:2;
+}
