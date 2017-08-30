@@ -59,16 +59,16 @@
             </div>
             <div class="card-row">
               <span class="run-card-max">Max Runners <%= run.group_number %> |</span>
-              <span class="run-card-type"><%= run.group_type.capitalize %></span>
+              <span class="run-card-type"><% if run.group_type != nil %> <%= run.group_type.capitalize %><% end %></span>
             </div>
             <div class="card-row">
               <span class="run-card-weather"><% if run.all_weather? %> <%= "Will go ahead in all weather" %><% end %></span>
             </div>
              <div class="card-row">
-              <span class="run-card-terrain"><%= run.terrain.capitalize %></span>
+              <span class="run-card-terrain"><% if run.terrain != nil %> <%= run.terrain.capitalize %><% end %></span>
             </div>
             <div class="card-row">
-              <span class="run-card-incline"><%= run.incline.capitalize %> |</span>
+              <span class="run-card-incline"><% if run.incline != nil %> <%= run.incline.capitalize %><% end %> |</span>
               <span class="run-card-elevation_gain">Elevation gain: <%= run.elevation_gain %></span>
             </div>
           <% end %>

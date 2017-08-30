@@ -14,7 +14,7 @@ class RunBookingsController < ApplicationController
     @run_booking.status = "Pending"
 
     if @run_booking.save!
-       redirect_to run_path(@run), notice: "Your request was successfully sent"
+       redirect_to run_path(@run)
     end
   end
 
@@ -38,12 +38,14 @@ class RunBookingsController < ApplicationController
   end
 
   def destroy
-    @run = Run.find(params["run_id"])
-    @user_to_decline = User.find(params[:user_to_decline_id])
     @run_booking = RunBooking.find(params[:id])
     @run_booking.destroy
 
-    redirect_to runner_path(current_user)
+    if params[:previous_page] == "run"
+      redirect_to run_path(@run_booking.run)
+    else
+      redirect_to runner_path(current_user)
+    end
   end
 
 

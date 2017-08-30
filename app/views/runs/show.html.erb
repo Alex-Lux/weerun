@@ -4,26 +4,26 @@
     <div class="show-page__container">
 
       <div class="show-page__search-row row">
-        <div class="show-page__search-column col-xs-12 col-md-offset-9 col-md-3 text-left">
+        <div class="show-page__search-column col-xs-12 col-md-offset-0 col-md-3 text-left">
           <%= link_to '<< back', runs_search_path, class: "btn btn-primary" %>
+        </div>
+        <div class="show-page__search-column-right col-xs-12 col-md-offset-9 col-md-3 text-right">
           <% if @run.user == current_user %>
-
                 <%= link_to 'Edit', edit_run_path(@run), class: "btn btn-primary"  %>
                 <%= link_to 'Delete',run_path(@run), method: :delete, class: "btn btn-danger"  %>
 
             <% else %>
                 <% if current_user.run_bookings.where(run: @run).map(&:status).first == "Pending" %>
 
-                  <%= link_to 'Cancel', run_run_booking_path(@run, @run.run_bookings.find_by(user: current_user)), method: :delete, class: "btn btn-warning" %>
+                  <%= link_to 'Cancel', run_run_booking_path(@run, @run.run_bookings.find_by(user: current_user), previous_page: "run"), method: :delete, class: "btn btn-warning" %>
                   <% else %>
 
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="booking">
+                    <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#booking">
                       Request to join
                     </button>
 
               <% end %>
             <% end %>
-        </div>
       </div>
 
       <!-- <h1 class="text-center"><%= @run.name.capitalize %> in <%= @run.location %></h1> -->
@@ -89,72 +89,12 @@
 
           </div>
 
-
-
-
-
-
-            <!-- <p><strong>When </strong><%= @run.date_time %></p>
-            <p><strong>When </strong><%= @run.date_time %></p>
-            <p><strong>Will go ahead in all weather  </strong><%= @run.all_weather  %></p> -->
-
-            <!-- <p><strong>Distance: </strong></b><%= @run.run_distance %>km</p>
-            <p><strong>Pace: </strong><%= @run.pace %>min/km</p> -->
-
-            <!--  <p><strong>Max Runners: </strong><%= @run.group_number %></p>
-            <p><strong>Group Type: </strong><%= @run.group_type %></p> -->
-            <!-- <p><strong>Incline: </strong><%= @run.incline %></p>
-            <p><strong>Terrain: </strong><%= @run.terrain %></p>
-            <p><strong>Elevation Gain: </strong><%= @run.elevation_gain %></p> -->
         </div>
 
       </div>
 
     </div>
   </div>
-</div>
-  <!-- <div class="container">
-    <div class="row">
-
-      <div class="col-xs-12 col-md-6 text-left">
-
-        <div class="card-run">
-          <div class="card-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= image_path(@run.photo) %>);"></div>
-          <div class="card-info">
-          <div class="card-category"><%= @run.terrain %></div>
-          <div class="card-description">
-            <h2><%= @run.name %> at <%= @run.location %></h2>
-            <p><b>When: </b><%= @run.date_time %></p>
-            <p><b>Distance: </b><%= @run.run_distance %>km</p>
-            <p><b>Run Pace: </b><%= @run.pace %>min/km</p>
-             <p><b>Run Incline: </b><%= @run.incline %></p>
-            <p><b>Elevation Gain: </b><%= @run.elevation_gain %></p>
-             <p><b>WeatherConditions: </b><%= @run.all_weather  %></p>
-            <p><b>Number of people: </b><%= @run.group_number %></p>
-             <p><b>Languages: </b><%= @run.language_spoken %></p>
-            <p><b>Details: </b><%= @run.description %></p>
-          Button trigger modal
-            </div>
-
-
-          </div>
-        </div>
-      </div>
-      <div class="col-xs-12 col-md-6 text-left">
-        <div class="card-run" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)">
-          <div class="card">
-            <div class="card-category"><%= @run.user.gender %></div>
-            <div class="card-description">
-              <h2><%= @run.user.first_name %> <%= @run.user.last_name %></h2>
-              <p><b>Language: </b><%= @run.user.language_spoken %></p>
-              <p><b>About: </b><%= @run.user.description %></p>
-              <p><b>Run Pace: </b><%= @run.user.pace %></p>
-            </div>
-            <img class="card-user" src=" <%= image_path(@run.user.photo) %> ">
-          </div>
-        </div>
-    </div>
-      </div> -->
 
 
 <% content_for(:after_js) do %>
