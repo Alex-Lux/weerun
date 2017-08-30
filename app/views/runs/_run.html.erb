@@ -38,14 +38,14 @@
       <div class="run-card-details">
         <div class="card-row">
           <span class="run-card-name"><%= run.name.titleize %> | </span>
-          <span class="run-card-location">Lisbon</span>
+          <span class="run-card-location"> <%= run.location %></span>
         </div>
         <div class="card-row">
           <span class="run-card-distance"><%= run.run_distance %> km |</span>
           <span class="run-card-pace"><%= run.pace %> min/km</span>
         </div>
         <div class="card-row">
-          <span class="run-card-datetime"> 28 Oct 2017</span>
+          <span class="run-card-datetime"><%= run.date_time %></span>
         </div>
       </div>
 
