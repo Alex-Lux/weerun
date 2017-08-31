@@ -28,6 +28,8 @@ class PagesController < ApplicationController
     @hash = Gmaps4rails.build_markers(@runs) do |run, marker|
       marker.lat run.latitude
       marker.lng run.longitude
+      marker.infowindow render_to_string(partial: "/runs/map_box", locals: { run: run })
+
     end
   end
 end
