@@ -51,25 +51,28 @@
               <span class="run-card-title"><strong><%= run.location.titleize %></strong></span>
             </div>
             <div class="card-row">
-              <span class="run-card-distance"><%= run.run_distance %> km |</span>
+              <span class="run-card-distance"><strong><%= run.run_distance %> km |</strong></span>
               <span class="run-card-pace"><%= run.pace %> min/km</span>
             </div>
             <div class="card-row">
-              <span class="run-card-datetime"> 28 Oct 2017</span>
+              <span class="run-card-date"><strong><%= @run.date_time.strftime("%d %b %Y") %> |</strong></span>
+              <span class="run-card-time"> <%= @run.date_time.strftime("%H:%M") %></span>
             </div>
             <div class="card-row">
-              <span class="run-card-max">Max Runners <%= run.group_number %> |</span>
+              <span class="run-card-max"><span><i class="fa fa-user-o"></i></span> Max Runners: <%= run.group_number %> |</span>
               <span class="run-card-type"><% if run.group_type != nil %> <%= run.group_type.capitalize %><% end %></span>
             </div>
             <div class="card-row">
+               <span class="run-card-terrain"><span><i class="fa fa-sun-o"></i></span><% if run.terrain != nil %> <%= run.terrain.capitalize %><% end %> |</span>
               <span class="run-card-weather"><% if run.all_weather? %> <%= "Will go ahead in all weather" %><% end %></span>
             </div>
-             <div class="card-row">
-              <span class="run-card-terrain"><% if run.terrain != nil %> <%= run.terrain.capitalize %><% end %></span>
+
+            <div class="card-row">
+              <span class="run-card-incline"><span><i class="fa fa-line-chart"></i></span><% if run.incline != nil %> <%= run.incline.capitalize %><% end %> |</span>
+              <span class="run-card-elevation_gain">Elevation gain: <%= run.elevation_gain %></span>
             </div>
             <div class="card-row">
-              <span class="run-card-incline"><% if run.incline != nil %> <%= run.incline.capitalize %><% end %> |</span>
-              <span class="run-card-elevation_gain">Elevation gain: <%= run.elevation_gain %></span>
+              <span class="run-card-description"><%= run.description %></span>
             </div>
           <% end %>
 

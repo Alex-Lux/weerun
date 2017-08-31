@@ -42,8 +42,6 @@
   height: 250px !important;
 }
 
-
-
 .run-card-link {
   color: black;
   position: absolute !important;
@@ -102,4 +100,23 @@
   text-overflow: ellipsis;
   position:relative;
   z-index:2;
+}
+.run-card-title {
+  font-size: 20px
+}
+
+.run-card-distance {
+  color: $blue;
+}
+
+.run-card-pace {
+  color: $blue;
+}
+
+.run-card-date {
+  color: $blue;
+}
+
+.run-card-time {
+  color: $blue;
 }
