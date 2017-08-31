@@ -5,7 +5,7 @@
 
       <div class="show-page__search-row row">
         <div class="show-page__search-column col-xs-12 col-md-offset-0 col-md-3 text-left">
-          <%= link_to '<< back', runs_search_path, class: "btn btn-default" %>
+          <%= link_to '<< back', runs_search_path, class: "btn btn-primary" %>
         </div>
         <div class="show-page__search-column-right col-xs-12 col-md-offset-9 col-md-3 text-right">
           <% if @run.user == current_user %>
@@ -29,13 +29,10 @@
       <!-- <h1 class="text-center"><%= @run.name.capitalize %> in <%= @run.location %></h1> -->
 
       <div class="show-page__user-row row">
-        <div class="show-page__user-details-column col-xs-12 col-md-4">
+        <div class="show-page__user-details-column col-xs-12 col-md-2 col-md-offset-1">
           <%= render @run %>
         </div>
-        <div class="show-page_run-details-column col-xs-12 col-md-6">
-          </div>
         </div>
-      </div>
 
       <div class="show-page__cta-row row">
 
@@ -44,23 +41,22 @@
 
       <div class="show-page__runners-row row">
       <h3>Other Runners Attending:</h3>
-
         <!-- WILL WORK ONCE OTHER RUNNERS SIGN UP -->
         <% @run.run_bookings.each do |booking| %>
           <% unless booking.user == @run.user %>
             <div class="show-page__column col-xs-3 col-md-1">
               <% if booking.user.photo.blank? %>
                 <% @photo = "profile.jpg" %>
-                <%= image_tag @photo, style: 'border-radius: 50%; width: 60px; border: 2px solid white;' %>
+                <%= image_tag @photo, style: 'border-radius: 50%; width: 100%;' %>
               <% else %>
                 <% @photo = booking.user.photo %>
-                <%= cl_image_tag @photo, style: 'border-radius: 50%; width: 60px; border: 2px solid white;'  %>
+                <%= runner_image_tag(@photo) %>
               <% end %>
             </div>
           <% end %>
         <% end %>
         <div class="show-page__user-avatar hidden-sm hidden-xs">
-          <%= image_tag @run.user.photo, style: 'border-radius: 50%; '  %>
+          <%= runner_image_tag(@run.user.photo)  %>
         </div>
 
       </div>
