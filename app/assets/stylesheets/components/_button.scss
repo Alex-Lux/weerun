@@ -2,7 +2,7 @@
   color: black;
   border: 1px solid #999999;
   padding: 10px 10px;
-  border-radius: 50px;
+  border-radius: 4px;
   font-weight: lighter;
   opacity: 0.6;
 }
@@ -15,8 +15,6 @@
   color: white;
   padding: 10px 15px;
   border-radius: 4px;
-  font-weight: bold;
-  border-radius: 50px;
   transition: background 0.3s ease;
 }
 .btn-treehouse:hover {
