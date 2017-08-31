@@ -30,12 +30,11 @@
         </tr>
 
         <% @user_created_runs.each do |run| %>
-          <tr>
-            <td> <%= link_to run.name, run_path(run) %> </td>
+
             <% if run.run_bookings.present? %>
-
+            <tr>
               <% run.run_bookings.each do |run_booking| %>
-
+                <td> <%= link_to run.name, run_path(run) %> </td>
                 <td> <%= run_booking.user.first_name %> <%= run_booking.user.last_name %> </td>
                 <td> <%= run_booking.status %> </td>
                 <td> <%= run_booking.user.email %> </td>
@@ -56,14 +55,20 @@
                   <% else %>
 
                   <% end %>
+
                 <% end %>
+                </td>
+              </tr>
 
               <% end %>
-              </td>
+
               <% else %>
+              <tr>
+                <td> <%= link_to run.name, run_path(run) %> </td>
                 <td colspan="3"></td>
                 <td><%= link_to 'Edit', edit_run_path(run), class: "btn btn-primary btn-block"  %></td>
                 <td><%= link_to 'Delete',run_path(run), method: :delete, class: "btn btn-danger btn-block"  %></td>
+              </tr>
               <% end %>
           <% end %>
         </tr>
