@@ -1,0 +1,5 @@
+meta_product_name: "WeeRun"
+meta_title: "WeeRun - Find a run near you"
+meta_description: "No matter where you are, or what your pace, find a run that suits you."
+meta_image: "fb-weerun.jpg"                       # should exist in `app/assets/images/`
+twitter_account: "@Wee_Run"   # required for Twitter Cards
