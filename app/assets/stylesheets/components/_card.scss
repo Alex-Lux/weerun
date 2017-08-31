@@ -22,7 +22,7 @@
 }
 
 .card-runner {
-  height: 400px;
+  height: 230px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
   background-position: center;
@@ -41,15 +41,48 @@
   position: relative;
   border-radius: 1%;
 }
-.card-user {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  width: 100px;
-  border-radius: 50%;
-  color: white;
-  background-color: #21273D;
+
+.card-user-popside{
+  position: relative;
+  left: -115px;
+   top: -53px;
+  // width: 100px;
+    height: 300px;
+  // border-radius:50%;
+  // color: white;
+  // background-color: white;
+   border: 5px solid white;
+    // position: fixed;
+    bottom: -100px;
+    right: -100px;
+    width: 300px;
+    z-index:-9999;
+  .fa-star {
+    color: $brand-info;
+    font-size: 30px;
+  }
 }
+
+// .card-user {
+//   position: absolute;
+//   left: 20px;
+//    top: 40px;
+//   // width: 100px;
+//    height: 190px;
+//   // border-radius:50%;
+//   // color: white;
+//   // background-color: white;
+//    border: 5px solid white;
+//     // position: fixed;
+//     bottom: -100px;
+//     right: -100px;
+//     width: 300px;
+//     z-index: 3000;
+//   .fa-star {
+//     color: $brand-info;
+//     font-size: 30px;
+//   }
+// }
 .card-category {
   position: absolute;
   top: 10px;
