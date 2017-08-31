@@ -44,7 +44,7 @@
 
 .card-user-popside{
   position: relative;
-  left: -115px;
+  left: -190px;
    top: -53px;
   // width: 100px;
     height: 300px;
@@ -57,11 +57,12 @@
     right: -100px;
     width: 300px;
     z-index:-9999;
-  .fa-star {
+}
+
+.fa-star {
     color: $brand-info;
     font-size: 30px;
   }
-}
 
 // .card-user {
 //   position: absolute;
