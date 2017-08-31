@@ -16,4 +16,17 @@ class Run < ApplicationRecord
 
   geocoded_by :location
   after_validation :geocode, if: :location_changed?
+
+  reverse_geocoded_by :latitude, :longitude, :address => :city
+
+  after_validation :reverse_geocode, if: :location_changed?
+
+  after_validation :get_city, if: :location_changed?
+
+
+  def get_city
+    if self.city
+      self.city = self.city.split(",")[1].gsub(/[0-9-,][^a-zA-Z\s]/, "")
+    end
+  end
 end
