@@ -30,7 +30,9 @@
     <meta name="twitter:image:src" content="<%= meta_image %>">
 
   </head>
-  <body>
+  <body class="<%= controller_name %> <%= action_name %>">
+
+
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <%= yield %>
