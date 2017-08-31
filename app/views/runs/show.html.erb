@@ -44,28 +44,23 @@
 
       <div class="show-page__runners-row row">
       <h3>Other Runners Attending:</h3>
-      <!-- HAS TO BE DELETED -->
-        <% 10.times do %>
-          <div class="col-xs-3 col-md-1">
-            <%= image_tag @run.user.photo, style: 'border-radius: 50%; width: 60px; border: 2px solid white;'  %>
-          </div>
-        <% end %>
+
         <!-- WILL WORK ONCE OTHER RUNNERS SIGN UP -->
         <% @run.run_bookings.each do |booking| %>
           <% unless booking.user == @run.user %>
             <div class="show-page__column col-xs-3 col-md-1">
               <% if booking.user.photo.blank? %>
                 <% @photo = "profile.jpg" %>
-                <%= image_tag @photo, style: 'border-radius: 50%; width: 100%;' %>
+                <%= image_tag @photo, style: 'border-radius: 50%; width: 60px; border: 2px solid white;' %>
               <% else %>
                 <% @photo = booking.user.photo %>
-                <%= cl_image_tag @photo, style: 'border-radius: 50%; width: 100%;' %>
+                <%= cl_image_tag @photo, style: 'border-radius: 50%; width: 60px; border: 2px solid white;'  %>
               <% end %>
             </div>
           <% end %>
         <% end %>
         <div class="show-page__user-avatar hidden-sm hidden-xs">
-          <%= image_tag @run.user.photo, style: 'border-radius: 50%;'  %>
+          <%= image_tag @run.user.photo, style: 'border-radius: 50%; '  %>
         </div>
 
       </div>
