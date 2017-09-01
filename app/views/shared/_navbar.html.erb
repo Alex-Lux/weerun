@@ -5,7 +5,7 @@
   <% end %>
 
   <%= link_to root_path, id: "logo-transparent", class: "navbar-wagon-brand hidden" do %>
-    <%= image_tag "weerun_logo_transparent.png" %>
+    <%= image_tag "weerun_logo.png" %>
   <% end %>
 
   <!-- Right Navigation -->
@@ -65,8 +65,8 @@
 </div>
 <% content_for(:after_js) do %>
 <script>
-if ($("body").is(".pages, .home")) {
-  $(".navbar-weerun").removeClass("navbar-white-white").addClass("navbar-transparent");
+if ($("body").is(".pages.home")) {
+  $(".navbar-weerun").removeClass("navbar-white").addClass("navbar-transparent");
   $("#logo-white").addClass("hidden");
   $("#logo-transparent").removeClass("hidden");
 }
