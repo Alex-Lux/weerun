@@ -16,17 +16,11 @@ User.destroy_all
 RunBookings.destroy_all
 
 # puts 'Creating 10 fake runners...'
-# 10.times do
-#  user = User.new(
-#    email: Faker::Internet.email,
- #   password: "123456",
-  #  remote_photo_url: Faker::Avatar.image,
-   # first_name: Faker::Name.first_name,
-   # last_name: Faker::Name.last_name,
-   # language_spoken: ["english", "french", "italian", "arabic", "german", "portuguese", "dutch", "japanese"].sample,
+
+#
    # gender: ["male", "female"].sample
   # )
-  # user.save!
+
 
 #rand(0..1).times do
 #

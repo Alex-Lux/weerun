@@ -1,7 +1,11 @@
-<div class="navbar-weerun">
+<div class="navbar-weerun navbar-white">
   <!-- Logo -->
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
+  <%= link_to root_path, id: "logo-white", class: "navbar-wagon-brand" do %>
     <%= image_tag "weerun_logo_white.jpg" %>
+  <% end %>
+
+  <%= link_to root_path, id: "logo-transparent", class: "navbar-wagon-brand hidden" do %>
+    <%= image_tag "weerun_logo_transparent.png" %>
   <% end %>
 
   <!-- Right Navigation -->
@@ -9,7 +13,6 @@
 
       <div class="navbar-wagon">
         <%= render 'pages/search_bar' unless @home %>
-
       </div>
 
 
@@ -60,4 +63,14 @@
     </div>
   </div>
 </div>
+<% content_for(:after_js) do %>
+<script>
+if ($("body").is(".pages, .home")) {
+  $(".navbar-weerun").removeClass("navbar-white-white").addClass("navbar-transparent");
+  $("#logo-white").addClass("hidden");
+  $("#logo-transparent").removeClass("hidden");
+}
+
+</script>
+<% end %>
 
