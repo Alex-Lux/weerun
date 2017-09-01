@@ -65,8 +65,8 @@
 </div>
 <% content_for(:after_js) do %>
 <script>
-if ($("body").is(".pages, .home")) {
-  $(".navbar-weerun").removeClass("navbar-white-white").addClass("navbar-transparent");
+if ($("body").is(".pages.home")) {
+  $(".navbar-weerun").removeClass("navbar-white").addClass("navbar-transparent");
   $("#logo-white").addClass("hidden");
   $("#logo-transparent").removeClass("hidden");
 }
